@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WordRead">
+</Property><Property Name="Solution File" Value="C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead.sln">
+</Property><Property Name="User Options File" Value="C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead.suo">
+</Property><Property Name="Date" Value="Tuesday, March 08, 2011">
+</Property><Property Name="Time" Value="19:59 PM">
+</Property><Property Name="Log Number" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="WordRead.sln" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead.sln">
+</Event><Event ErrorLevel="0" Project="" Source="WordRead.suo" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead.suo">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\ScrabbleAI.csproj" Description="Project file successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\ScrabbleAI.csproj">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\ScrabbleAI.csproj.user" Description="Project user file successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\ScrabbleAI.csproj.user">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\BoardDisplay.cs" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\BoardDisplay.cs">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\BoardDisplay.Designer.cs" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\BoardDisplay.Designer.cs">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\wdescrip.cs" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\wdescrip.cs">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\Scrabble.cs" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\Scrabble.cs">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\WordReader.cs" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\WordReader.cs">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\Program.cs" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\Program.cs">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\BoardDisplay.resx" Description="File successfully backed up as C:\Users\PIP\Desktop\WordReadNewEra\WordRead\Backup1\WordRead\BoardDisplay.resx">
+</Event><Event ErrorLevel="0" Project="ScrabbleAI" Source="WordRead\ScrabbleAI.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="ScrabbleAI" Source="WordRead\ScrabbleAI.csproj" Description="Converted">
+</Event></UpgradeLog>

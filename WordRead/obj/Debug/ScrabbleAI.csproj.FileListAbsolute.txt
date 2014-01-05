@@ -1,0 +1,36 @@
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\bin\Debug\ScrabbleAI.exe
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\bin\Debug\ScrabbleAI.pdb
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\obj\Debug\ScrabbleAI.exe
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\obj\Debug\ScrabbleAI.pdb
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\obj\Debug\ScrabbleAI.exe
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\obj\Debug\ScrabbleAI.pdb
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\bin\Debug\ScrabbleAI.exe
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\bin\Debug\ScrabbleAI.pdb
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\obj\Debug\WordRead.BoardDisplay.resources
+C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\obj\Debug\ScrabbleAI.csproj.GenerateResource.Cache
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\obj\Debug\ScrabbleAI.exe
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUI\WordRead\WordRead\obj\Debug\ScrabbleAI.pdb
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUIFast\WordRead\WordRead\obj\Debug\ScrabbleAI.exe
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUIFast\WordRead\WordRead\obj\Debug\ScrabbleAI.pdb
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUIFast\WordRead\WordRead\bin\Debug\ScrabbleAI.exe
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUIFast\WordRead\WordRead\bin\Debug\ScrabbleAI.pdb
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUIFast\WordRead\WordRead\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUIFast\WordRead\WordRead\obj\Debug\WordRead.BoardDisplay.resources
+C:\Users\gumpy\DocumentsAndSettings\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordReadGUIFast\WordRead\WordRead\obj\Debug\ScrabbleAI.csproj.GenerateResource.Cache
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\obj\Debug\ScrabbleAI.exe
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\obj\Debug\ScrabbleAI.pdb
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\obj\Debug\WordRead.BoardDisplay.resources
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\bin\Debug\ScrabbleAI.exe
+C:\Users\PIP\Desktop\WordReadNewEra\WordRead\WordRead\bin\Debug\ScrabbleAI.pdb
+C:\Users\gumpy\Desktop\CSharp\WordReadNewEra\WordRead\WordRead\obj\Debug\ScrabbleAI.exe
+C:\Users\gumpy\Desktop\CSharp\WordReadNewEra\WordRead\WordRead\obj\Debug\ScrabbleAI.pdb
+C:\Users\gumpy\Desktop\CSharp\WordReadNewEra\WordRead\WordRead\obj\Debug\ScrabbleAI.csprojResolveAssemblyReference.cache
+C:\Users\gumpy\Desktop\CSharp\WordReadNewEra\WordRead\WordRead\obj\Debug\WordRead.BoardDisplay.resources
+C:\Users\gumpy\Desktop\CSharp\WordReadNewEra\WordRead\WordRead\obj\Debug\ScrabbleAI.csproj.GenerateResource.Cache
+C:\Users\gumpy\Desktop\CSharp\WordReadNewEra\WordRead\WordRead\bin\Debug\ScrabbleAI.exe
+C:\Users\gumpy\Desktop\CSharp\WordReadNewEra\WordRead\WordRead\bin\Debug\ScrabbleAI.pdb
