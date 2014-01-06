@@ -1,5 +1,0 @@
-C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\bin\Debug\WordRead.exe
-C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\bin\Debug\WordRead.pdb
-C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\obj\Debug\WordRead.exe
-C:\Documents and Settings\Ethan Benjamin\My Documents\SharpDevelop Projects\WordRead\WordRead\obj\Debug\WordRead.pdb
