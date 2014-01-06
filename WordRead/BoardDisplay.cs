@@ -173,7 +173,7 @@ namespace WordRead
         
         public wdescrip selWdescrip;
         private char[] slots = "       ".ToCharArray();
-        private bool selDir = Scrabble.RIGHT;
+        private bool selDir = Scrabble.Right;
         const char LEFT_KEY = (char)0;
         const char UP_KEY = (char)1;
         const char RIGHT_KEY = (char)2;
@@ -208,13 +208,13 @@ namespace WordRead
                 if ((key >= 'a' && key <= 'z') || (key >= 'A' && key <= 'Z') )
                 {
                     board[selRow, selCol] = key;
-                    if (selDir == Scrabble.RIGHT)
+                    if (selDir == Scrabble.Right)
                     {
                         if (selCol < 14)
                             selCol++;
                     }
 
-                    if (selDir == Scrabble.DOWN)
+                    if (selDir == Scrabble.Down)
                     {
                         if (selRow < 14)
                             selRow++;
@@ -224,9 +224,9 @@ namespace WordRead
                 if (key == '\b')
                 {
                     board[selRow, selCol] = (char)0;
-                    if (selDir == Scrabble.RIGHT && selCol > 0)
+                    if (selDir == Scrabble.Right && selCol > 0)
                         --selCol;
-                    else if (selDir == Scrabble.DOWN && selRow > 0)
+                    else if (selDir == Scrabble.Down && selRow > 0)
                         --selRow;
 
 
@@ -234,8 +234,8 @@ namespace WordRead
 
                 if (key == LEFT_KEY)
                 {
-                    if (selDir == Scrabble.DOWN)
-                        selDir = Scrabble.RIGHT;
+                    if (selDir == Scrabble.Down)
+                        selDir = Scrabble.Right;
                     else if(selCol>0)
                     {
                         --selCol;
@@ -244,8 +244,8 @@ namespace WordRead
 
                 else if (key == UP_KEY)
                 {
-                    if (selDir == Scrabble.RIGHT)
-                        selDir = Scrabble.DOWN;
+                    if (selDir == Scrabble.Right)
+                        selDir = Scrabble.Down;
 
                     else if (selRow > 0)
                         --selRow;
@@ -253,8 +253,8 @@ namespace WordRead
 
                 else if (key == RIGHT_KEY)
                 {
-                    if (selDir == Scrabble.DOWN)
-                        selDir = Scrabble.RIGHT;
+                    if (selDir == Scrabble.Down)
+                        selDir = Scrabble.Right;
                     else if (selCol < 14)
                         ++selCol;
 
@@ -262,8 +262,8 @@ namespace WordRead
 
                 else if (key == DOWN_KEY)
                 {
-                    if (selDir == Scrabble.RIGHT)
-                        selDir = Scrabble.DOWN;
+                    if (selDir == Scrabble.Right)
+                        selDir = Scrabble.Down;
                     else if (selRow < 14)
                         ++selRow;
                 }
@@ -386,7 +386,7 @@ namespace WordRead
         {
             if (w == null)
                 return ' ';
-            if (w.Dir == Scrabble.RIGHT)
+            if (w.Dir == Scrabble.Right)
             {
                 if (row == w.Row && col >= w.Col && col < w.Col + w.Length)
                 {
@@ -433,36 +433,36 @@ namespace WordRead
 
             else
             {
-                descriptor tileType = desc[row, col];
+                Descriptor tileType = Desc[row, col];
                 Brush backColor = DescBackColor(tileType);
                 switch (tileType)
                 {
-                    case descriptor.doubleL:
+                    case Descriptor.DoubleL:
                         g.DrawRectangle(defaultPen, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.FillRectangle(backColor, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.DrawString("Double", defaultFont, Brushes.Black, x - 2 , y + 2);
                         g.DrawString("Letter", defaultFont, Brushes.Black, x + 2, y + 10);
                         break;
-                    case descriptor.tripleL:
+                    case Descriptor.TripleL:
                         g.DrawRectangle(defaultPen, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.FillRectangle(backColor, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.DrawString("Triple", defaultFont, Brushes.Black, x + 2, y + 2);
                         g.DrawString("Letter", defaultFont, Brushes.Black, x + 2, y + 10);
                         
                         break;
-                    case descriptor.doubleW:
+                    case Descriptor.DoubleW:
                         g.DrawRectangle(defaultPen, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.FillRectangle(backColor, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.DrawString("Double", defaultFont, Brushes.Black, x - 2 , y + 2);
                         g.DrawString("Word", defaultFont, Brushes.Black, x + 2, y + 10);
                         break;
-                    case descriptor.tripleW:
+                    case Descriptor.TripleW:
                         g.DrawRectangle(defaultPen, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.FillRectangle(backColor, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.DrawString("Triple", defaultFont, Brushes.Black, x + 2, y + 2);
                         g.DrawString("Word", defaultFont, Brushes.Black, x + 2, y + 10);
                         break;
-                    case descriptor.empty:
+                    case Descriptor.Empty:
               
                         g.DrawRectangle(defaultPen, x, y, TILE_WIDTH, TILE_HEIGHT);
                         g.FillRectangle(backColor, x, y, TILE_WIDTH, TILE_HEIGHT);
@@ -475,7 +475,7 @@ namespace WordRead
             }
 
             //highlight if in the zone, chief
-            if ((row == selRow && selDir == Scrabble.RIGHT) || (col == selCol && selDir == Scrabble.DOWN))
+            if ((row == selRow && selDir == Scrabble.Right) || (col == selCol && selDir == Scrabble.Down))
             {
                 //Brush b = new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.ForwardDiagonal,Color.Yellow);
                 Brush b = new SolidBrush(Color.FromArgb(90, Color.Yellow));
@@ -495,20 +495,20 @@ namespace WordRead
 
 
 
-        private Brush DescBackColor(descriptor d)
+        private Brush DescBackColor(Descriptor d)
         {
             switch (d)
             {
-                case descriptor.doubleL:
+                case Descriptor.DoubleL:
                     return Brushes.LightBlue;
-                case descriptor.tripleL:
+                case Descriptor.TripleL:
                     return Brushes.Blue;
-                case descriptor.doubleW:
+                case Descriptor.DoubleW:
                     //return Brushes.Salmon;
                     return Brushes.MediumVioletRed;
-                case descriptor.tripleW:
+                case Descriptor.TripleW:
                     return Brushes.Red;
-                case descriptor.empty:
+                case Descriptor.Empty:
                     return letterBrush;
                 default:
                     return Brushes.Black;

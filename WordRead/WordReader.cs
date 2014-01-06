@@ -66,23 +66,6 @@ namespace WordRead
             //will this work?
             bool canhaz = beginnings[w.Length - 1].Contains(w);
             return canhaz;
-
-
-			/*int index = words.BinarySearch(w);
-			if(index>=0)
-				return true;
-			int fake = ~index;
-			if(fake>words.Count-1)
-				return false;
-			string cur = Enumerable.ElementAt(words,fake);
-		
-			if(cur.StartsWith(w)){
-				//Console.WriteLine(cur + " starts with " + w);
-				return true;
-			}
-			
-			//Console.WriteLine(cur + " doesn't start with " + w);
-			return false;*/
 			
 		}
 		

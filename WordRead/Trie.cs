@@ -94,7 +94,7 @@ namespace WordRead
             }
         }
 
-        static int index(char c)
+        static int Index(char c)
         {
             if (char.IsLower(c))
                 return (int)(c - 'a');
@@ -108,7 +108,7 @@ namespace WordRead
         {
             get
             {
-                var ind = index(c);
+                var ind = Index(c);
                 if (ind > -1)
                     return children[ind];
                 else
@@ -117,7 +117,7 @@ namespace WordRead
 
             set
             {
-                var ind = index(c);
+                var ind = Index(c);
                 children[ind] = value;
             }
         }

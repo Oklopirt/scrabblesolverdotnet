@@ -10,17 +10,17 @@ namespace WordRead
     public partial class Scrabble
     {
 
-        const bool DOWN = true;
-        const bool RIGHT = false;
-        const byte scrabHW = 15;
+        const bool Down = true;
+        const bool Right = false;
+        const int ScrabHw = 15;
         //definition of the thins on the words
-        enum descriptor { empty, doubleL, tripleL, doubleW, tripleW };
-        readonly static descriptor[,] desc;
-        readonly static byte[] lettervalues = { 1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10 };
-        const byte LOWERCASE_OFFSET = 97;
+        enum Descriptor { Empty, DoubleL, TripleL, DoubleW, TripleW };
+        readonly static Descriptor[,] Desc;
+        readonly static byte[] Lettervalues = { 1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10 };
+        const int LowercaseOffset = 97;
         const string dictionary = "EnglishWords.txt";
-        const char EMPTY = (char)0;
-        readonly static char[] UPPERCASE_ALPH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+        const char Empty = (char)0;
+        readonly static char[] UppercaseAlph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
 
         //the current board. Holds 0 if empty, the letter otherwise
         char[,] board;
@@ -32,20 +32,20 @@ namespace WordRead
         bool firstword = false;
 
         //the word database
-        WordReader W;
+        Trie W;
 
         List<wdescrip> curPossWords = null;
 
         public Scrabble()
         {
 
-            board = new char[scrabHW, scrabHW];
-            for (int i = 0; i < scrabHW; i++)
-                for (int j = 0; j < scrabHW; j++)
-                    board[i, j] = EMPTY;
+            board = new char[ScrabHw, ScrabHw];
+            for (int i = 0; i < ScrabHw; i++)
+                for (int j = 0; j < ScrabHw; j++)
+                    board[i, j] = Empty;
 
             curletz = new List<char>();
-            W = new WordReader(dictionary);
+            W = Trie.FromFile(dictionary);
 
         }
 
@@ -65,7 +65,7 @@ namespace WordRead
             char[] wordletz = word.ToCharArray();
 
 
-            if (dir == Scrabble.DOWN)
+            if (dir == Scrabble.Down)
             {
                 if (row + strlen > board.GetLength(0))
                 {
@@ -77,7 +77,7 @@ namespace WordRead
                     board[i, col] = wordletz[i - row];
             }
 
-            else if (dir == Scrabble.RIGHT)
+            else if (dir == Scrabble.Right)
             {
                 if (col + strlen > board.GetLength(1))
                 {
@@ -94,7 +94,7 @@ namespace WordRead
             firstword = false;
             for (int i = 0; i < board.GetLength(0); i++)
                 for (int j = 0; j < board.GetLength(0); j++)
-                    board[i, j] = EMPTY;
+                    board[i, j] = Empty;
         }
 
         public void refrLetters(string letz)
@@ -113,11 +113,11 @@ namespace WordRead
         public bool DorR(string inp)
         {
             if (inp.Equals("D") || inp.Equals("d"))
-                return Scrabble.DOWN;
+                return Scrabble.Down;
             else if (inp.Equals("R") || inp.Equals("r"))
             {
 
-                return Scrabble.RIGHT;
+                return Scrabble.Right;
             }
             else { error("bad input for direction"); return false; }
         }
@@ -199,7 +199,7 @@ namespace WordRead
 
                 else if (first.Equals("startwith"))
                 {
-                    string response = (W.anyStart(cmds[1])) ? " is " : " is not ";
+                    string response = (W.IsPrefix(cmds[1])) ? " is " : " is not ";
                     Console.WriteLine("There " + response + "a word that starts with " + cmds[1]);
 
                 }
@@ -230,30 +230,30 @@ namespace WordRead
                 {
                     char inplay = board[i, j];
                     if (inplay == (char)0)
-                        Console.Write(descrip_rep(desc[i, j]) + " ");
+                        Console.Write(descrip_rep(Desc[i, j]) + " ");
                     else { Console.Write(board[i, j] + " "); }
                 }
                 Console.WriteLine("\n");
             }
         }
 
-        private static char descrip_rep(descriptor d)
+        private static char descrip_rep(Descriptor d)
         {
             switch (d)
             {
-                case descriptor.doubleL:
+                case Descriptor.DoubleL:
                     return '2';
 
-                case descriptor.tripleL:
+                case Descriptor.TripleL:
                     return '3';
 
-                case descriptor.doubleW:
+                case Descriptor.DoubleW:
                     return 'D';
 
-                case descriptor.tripleW:
+                case Descriptor.TripleW:
                     return 'T';
 
-                case descriptor.empty:
+                case Descriptor.Empty:
                     return '0';
 
                 default:
@@ -266,39 +266,39 @@ namespace WordRead
         //initialize the descriptors
         static Scrabble()
         {
-            desc = new descriptor[scrabHW, scrabHW];
+            Desc = new Descriptor[ScrabHw, ScrabHw];
             //most things are empty
-            for (int i = 0; i < scrabHW; i++)
-                for (int j = 0; j < scrabHW; j++)
-                    desc[i, j] = descriptor.empty;
+            for (int i = 0; i < ScrabHw; i++)
+                for (int j = 0; j < ScrabHw; j++)
+                    Desc[i, j] = Descriptor.Empty;
 
-            byte[,] tripdubz = { { 0, 0 }, { 0, 7 }, { 0, 14 }, { 7, 0 }, { 7, 14 }, { 14, 0 }, { 14, 7 }, { 14, 14 } };
-            fillArray(tripdubz, desc, descriptor.tripleW);
+            int[,] tripdubz = { { 0, 0 }, { 0, 7 }, { 0, 14 }, { 7, 0 }, { 7, 14 }, { 14, 0 }, { 14, 7 }, { 14, 14 } };
+            fillArray(tripdubz, Desc, Descriptor.TripleW);
 
-            byte[,] doubleletz = {{0,3},{0,11},{2,6},{2,8},{3,0},{3,7},{3,14},
+            int[,] doubleletz = {{0,3},{0,11},{2,6},{2,8},{3,0},{3,7},{3,14},
             {6,2},{6,6},{6,8},{6,12},{7,3},{7,11},{8,2},{8,6},{8,8},{8,12},
             {11,0},{11,7},{11,14},{12,6},{12,8},{14,3},{14,11}};
-            fillArray(doubleletz, desc, descriptor.doubleL);
+            fillArray(doubleletz, Desc, Descriptor.DoubleL);
 
-            byte[,] tripletz = {{1,5},{1,9},{5,1},{5,5},{5,9},{5,13},
+            int[,] tripletz = {{1,5},{1,9},{5,1},{5,5},{5,9},{5,13},
             {9,1},{9,9},{9,5},{9,13},{13,5},{13,9}};
-            fillArray(tripletz, desc, descriptor.tripleL);
+            fillArray(tripletz, Desc, Descriptor.TripleL);
 
             //now get the double words
-            desc[7, 7] = descriptor.doubleW;
-            descriptor dW = descriptor.doubleW;
+            Desc[7, 7] = Descriptor.DoubleW;
+            Descriptor dW = Descriptor.DoubleW;
             for (int i = 1; i <= 4; i++)
             {
-                desc[i, i] = dW;
-                desc[i, 14 - i] = dW;
-                desc[14 - i, i] = dW;
-                desc[14 - i, 14 - i] = dW;
+                Desc[i, i] = dW;
+                Desc[i, 14 - i] = dW;
+                Desc[14 - i, i] = dW;
+                Desc[14 - i, 14 - i] = dW;
             }
 
         }
 
 
-        private static void fillArray(byte[,] coords, descriptor[,] fillin, descriptor D)
+        private static void fillArray(int[,] coords, Descriptor[,] fillin, Descriptor D)
         {
             for (int i = 0; i < coords.GetLength(0); i++)
                 fillin[coords[i, 0], coords[i, 1]] = D;
@@ -306,10 +306,10 @@ namespace WordRead
         private int letter_value(char c)
         {
             //if c is in the blank alphabet
-            if (c < LOWERCASE_OFFSET || c == '*')
+            if (c < LowercaseOffset || c == '*')
                 return 0;
 
-            return lettervalues[(int)c - LOWERCASE_OFFSET];
+            return Lettervalues[(int)c - LowercaseOffset];
         }
 
 
@@ -363,10 +363,10 @@ namespace WordRead
                 RowCol(wdList, i, j, dir);
                 if (!firstword)
                 {
-                    if (dir == RIGHT)
-                        wdList.RemoveAll(x => x.Dir == Scrabble.RIGHT && !(x.Col <= 7 && (x.Col + x.Length - 1) >= 7));
-                    else if (dir == DOWN)
-                        wdList.RemoveAll(x => x.Dir == Scrabble.DOWN && !(x.Row <= 7 && (x.Row + x.Length - 1) >= 7));
+                    if (dir == Right)
+                        wdList.RemoveAll(x => x.Dir == Scrabble.Right && !(x.Col <= 7 && (x.Col + x.Length - 1) >= 7));
+                    else if (dir == Down)
+                        wdList.RemoveAll(x => x.Dir == Scrabble.Down && !(x.Row <= 7 && (x.Row + x.Length - 1) >= 7));
                 }
                 if (Interlocked.Decrement(ref threadCount) == 0)
                 {
@@ -387,12 +387,12 @@ namespace WordRead
                 {
                     //if not within, continue
 
-                    if (first_letter(i, j, RIGHT) || (board[i, j] == EMPTY && (j == 0 || board[i, j - 1] == EMPTY)))
+                    if (first_letter(i, j, Right) || (board[i, j] == Empty && (j == 0 || board[i, j - 1] == Empty)))
                         if (firstword || (!firstword && i == 7))
                         {
                             List<wdescrip> horizontals = new List<wdescrip>();
                             allWordLists.Add(horizontals);
-                            argsList.Add(new object[] { horizontals, i, j, RIGHT, ind });
+                            argsList.Add(new object[] { horizontals, i, j, Right, ind });
                             ind++;
                         }
 
@@ -404,12 +404,12 @@ namespace WordRead
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (first_letter(i, j, DOWN) || (board[i, j] == EMPTY && (i == 0 || board[i - 1, j] == EMPTY)))
+                    if (first_letter(i, j, Down) || (board[i, j] == Empty && (i == 0 || board[i - 1, j] == Empty)))
                         if (firstword || (!firstword && j == 7))
                         {
                             List<wdescrip> verticals = new List<wdescrip>();
                             allWordLists.Add(verticals);
-                            argsList.Add(new object[] { verticals, i, j, DOWN, ind });
+                            argsList.Add(new object[] { verticals, i, j, Down, ind });
                             ind++;
                         }
                 }
@@ -451,7 +451,7 @@ namespace WordRead
             //recurse.
             //if we're on a placed letter, add word if it is final letter and addition of letter is a word
             //this happens when we've added letters that bridge already placed letters
-            if (board[curRow, curCol] != Scrabble.EMPTY)
+            if (board[curRow, curCol] != Scrabble.Empty)
             {
                 if (!seven && (curletz.Count - availLetters.Count) == 7)
                 {
@@ -462,37 +462,37 @@ namespace WordRead
                 link = true;
                 char onBoard = board[curRow, curCol];
                 //return if it is futile to go on
-                if (!(W.anyStart(wordSoFar + onBoard)))
+                if (!(W.IsPrefix(wordSoFar + onBoard)))
                     return;
 
-                if (dir == Scrabble.RIGHT)
+                if (dir == Scrabble.Right)
                 {
 
                     //if we reached the end or the next letter is empty
-                    if (bridge && ((curCol == board.GetLength(1) - 1) || (board[curRow, curCol + 1] == Scrabble.EMPTY)))
+                    if (bridge && ((curCol == board.GetLength(1) - 1) || (board[curRow, curCol + 1] == Scrabble.Empty)))
                     { //|| ((board[curRow,curCol+1] == OldScrabble.EMPTY) && bridge)){
 
                         //if we're legit up and down and the word is a word, add it. Don't need legit up and down since placement implies this
-                        if (W.isWord(wordSoFar + onBoard))
-                            wordList.Add(new wdescrip(wordSoFar + onBoard, startCol, startRow, Scrabble.RIGHT, addedVal + (baseValue + letter_value(onBoard)) * multiplier));
+                        if (W.IsWord(wordSoFar + onBoard))
+                            wordList.Add(new wdescrip(wordSoFar + onBoard, startCol, startRow, Scrabble.Right, addedVal + (baseValue + letter_value(onBoard)) * multiplier));
                     }
                     //else{
 
-                    getRowCol(wordList, availLetters, wordSoFar + onBoard, startRow, startCol, curRow, curCol + 1, Scrabble.RIGHT, brid, link, seven, baseValue +
+                    getRowCol(wordList, availLetters, wordSoFar + onBoard, startRow, startCol, curRow, curCol + 1, Scrabble.Right, brid, link, seven, baseValue +
                               letter_value(onBoard), addedVal, multiplier);
                     //}
                 }
 
-                else if (dir == Scrabble.DOWN)
+                else if (dir == Scrabble.Down)
                 {
-                    if (bridge && ((curRow == board.GetLength(0) - 1) || (board[curRow + 1, curCol] == Scrabble.EMPTY)))
+                    if (bridge && ((curRow == board.GetLength(0) - 1) || (board[curRow + 1, curCol] == Scrabble.Empty)))
                     { // || ((board[curRow+1,curCol] == OldScrabble.EMPTY) && bridge) ){
                         //if we're legit up and down and the word is a word, add it
-                        if (W.isWord(wordSoFar + onBoard))
-                            wordList.Add(new wdescrip(wordSoFar + onBoard, startCol, startRow, Scrabble.DOWN, addedVal + (baseValue + letter_value(onBoard)) * multiplier));
+                        if (W.IsWord(wordSoFar + onBoard))
+                            wordList.Add(new wdescrip(wordSoFar + onBoard, startCol, startRow, Scrabble.Down, addedVal + (baseValue + letter_value(onBoard)) * multiplier));
                     }
                     //else{
-                    getRowCol(wordList, availLetters, wordSoFar + onBoard, startRow, startCol, curRow + 1, curCol, Scrabble.DOWN, brid, link, seven, baseValue +
+                    getRowCol(wordList, availLetters, wordSoFar + onBoard, startRow, startCol, curRow + 1, curCol, Scrabble.Down, brid, link, seven, baseValue +
                               letter_value(onBoard), addedVal, multiplier);
                     //}
                 }
@@ -506,18 +506,18 @@ namespace WordRead
                 int lettermult = 1;
                 int wordmult = 1;
 
-                switch (desc[curRow, curCol])
+                switch (Desc[curRow, curCol])
                 {
-                    case descriptor.doubleL:
+                    case Descriptor.DoubleL:
                         lettermult = 2;
                         break;
-                    case descriptor.tripleL:
+                    case Descriptor.TripleL:
                         lettermult = 3;
                         break;
-                    case descriptor.doubleW:
+                    case Descriptor.DoubleW:
                         wordmult = 2;
                         break;
-                    case descriptor.tripleW:
+                    case Descriptor.TripleW:
                         wordmult = 3;
                         break;
                 }
@@ -534,7 +534,7 @@ namespace WordRead
                     char[] iterLetters;
 
                     if (useLetter == '*')
-                        iterLetters = UPPERCASE_ALPH;
+                        iterLetters = UppercaseAlph;
                     else
                         iterLetters = new char[] { useLetter };
 
@@ -551,7 +551,7 @@ namespace WordRead
                         }
 
                         //if there is no word starting with this, continue
-                        if (!W.anyStart(wordSoFar + useLet))
+                        if (!W.IsPrefix(wordSoFar + useLet))
                             continue;
 
                         int letter_worth = letter_value(useLet);
@@ -578,9 +578,9 @@ namespace WordRead
                         //its a single letter but the environment is good
 
                         //true if thre aren't letters to the right or below
-                        bool surround = (dir == RIGHT && curCol == 14) || (dir == DOWN && curRow == 14) || (dir == RIGHT && board[curRow, curCol + 1] == EMPTY) || (dir == DOWN && board[curRow + 1, curCol] == EMPTY);
+                        bool surround = (dir == Right && curCol == 14) || (dir == Down && curRow == 14) || (dir == Right && board[curRow, curCol + 1] == Empty) || (dir == Down && board[curRow + 1, curCol] == Empty);
 
-                        if (surround && (W.isWord(wordSoFar + useLet) || (wordSoFar.Equals("") && firstword)) && link)
+                        if (surround && (W.IsWord(wordSoFar + useLet) || (wordSoFar.Equals("") && firstword)) && link)
                         {
                             int value;
                             if (wordSoFar.Length == 0)
@@ -598,10 +598,10 @@ namespace WordRead
                         nextset.Remove(useLetter);
 
 
-                        if (dir == Scrabble.DOWN)
+                        if (dir == Scrabble.Down)
                             getRowCol(wordList, nextset, wordSoFar + useLet, startRow,
                                       startCol, curRow + 1, curCol, dir, brid, link, seven, baseValue + baseAdd, addedVal, multiplier * wordmult);
-                        else if (dir == Scrabble.RIGHT)
+                        else if (dir == Scrabble.Right)
                             getRowCol(wordList, nextset, wordSoFar + useLet, startRow,
                                       startCol, curRow, curCol + 1, dir, brid, link, seven, baseValue + baseAdd, addedVal, multiplier * wordmult);
                         //end of iterLetters block
@@ -617,24 +617,24 @@ namespace WordRead
         //tells whether a letter in a given direction is the first
         private bool first_letter(int row, int col, bool dir)
         {
-            if (board[row, col] == EMPTY)
+            if (board[row, col] == Empty)
                 return false;
-            if (dir == RIGHT)
+            if (dir == Right)
             {
                 if (col == 0)
                     return true;
-                if (board[row, col - 1] != EMPTY)
+                if (board[row, col - 1] != Empty)
                     return false;
                 else
                     return true;
 
             }
 
-            if (dir == DOWN)
+            if (dir == Down)
             {
                 if (row == 0)
                     return true;
-                if (board[row - 1, col] != EMPTY)
+                if (board[row - 1, col] != Empty)
                     return false;
                 else
                     return true;
@@ -647,7 +647,7 @@ namespace WordRead
         private bool verify_around(char letter, int row, int col, bool dir)
         {
             string aroundword = aroundletters(letter, row, col, dir);
-            if ((aroundword.Length == 1) || W.isWord(aroundword))
+            if ((aroundword.Length == 1) || W.IsWord(aroundword))
                 return true;
             else
             {
@@ -659,7 +659,7 @@ namespace WordRead
         private bool has_neighbors(int row, int col, bool dir)
         {
             //check left and right
-            if (dir == DOWN)
+            if (dir == Down)
             {
                 if (col == 0)
                 {
@@ -680,7 +680,7 @@ namespace WordRead
 
             }
 
-            else if (dir == RIGHT)
+            else if (dir == Right)
             {
                 if (row == 0)
                 {
@@ -711,7 +711,7 @@ namespace WordRead
 
         private bool board_empty(int row, int col)
         {
-            return board[row, col] == EMPTY;
+            return board[row, col] == Empty;
         }
 
         private int value_around(char letter, int row, int col, bool dir)
@@ -731,24 +731,24 @@ namespace WordRead
 
 
             //check that we only have one letter
-            if (dir == Scrabble.RIGHT)
+            if (dir == Scrabble.Right)
             {
 
                 if (row == (board.GetLength(0) - 1))
-                    if (board[row - 1, col] == EMPTY)
+                    if (board[row - 1, col] == Empty)
                         return "" + letter;
                     else if (row == 0)
-                        if (board[row + 1, col] == EMPTY)
+                        if (board[row + 1, col] == Empty)
                             return "" + letter;
             }
 
-            else if (dir == Scrabble.DOWN)
+            else if (dir == Scrabble.Down)
             {
                 if (col == (board.GetLength(1) - 1))
-                    if (board[row, col - 1] == EMPTY)
+                    if (board[row, col - 1] == Empty)
                         return "" + letter;
                     else if (col == 0)
-                        if (board[row, col + 1] == EMPTY)
+                        if (board[row, col + 1] == Empty)
                             return "" + letter;
             }
 
@@ -759,19 +759,19 @@ namespace WordRead
 
             StringBuilder s = new StringBuilder(15);
 
-            if (dir == Scrabble.RIGHT)
+            if (dir == Scrabble.Right)
             {
                 int firstrow;
-                for (firstrow = row; firstrow > 0 && board[firstrow - 1, col] != EMPTY; firstrow--) { }
+                for (firstrow = row; firstrow > 0 && board[firstrow - 1, col] != Empty; firstrow--) { }
 
                 //string s = "";
                 //board.GetLength(0)
-                for (int i = firstrow; i < row && board[i, col] != EMPTY; i++)
+                for (int i = firstrow; i < row && board[i, col] != Empty; i++)
                     s.Append(board[i, col]);
 
                 s.Append(board[row, col]);
 
-                for (int i = row + 1; i < board.GetLength(0) && board[i, col] != EMPTY; i++)
+                for (int i = row + 1; i < board.GetLength(0) && board[i, col] != Empty; i++)
                     s.Append(board[i, col]);
 
                 return s.ToString();
@@ -779,17 +779,17 @@ namespace WordRead
 
                 //do up to letter, then add letter, then do up to the end
 
-            else if (dir == Scrabble.DOWN)
+            else if (dir == Scrabble.Down)
             {
                 int firstcol;
-                for (firstcol = col; firstcol > 0 && board[row, firstcol - 1] != EMPTY; firstcol--) { }
+                for (firstcol = col; firstcol > 0 && board[row, firstcol - 1] != Empty; firstcol--) { }
 
-                for (int i = firstcol; i < col && board[row, i] != EMPTY; i++)
+                for (int i = firstcol; i < col && board[row, i] != Empty; i++)
                     s.Append(board[row, i]);
 
                 s.Append(board[row, col]);
 
-                for (int i = col + 1; i < board.GetLength(1) && board[row, i] != EMPTY; i++)
+                for (int i = col + 1; i < board.GetLength(1) && board[row, i] != Empty; i++)
                 {
                     s.Append(board[row, i]);
                 }
